@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "unordered_map": "cpp",
+        "list": "cpp",
+        "iosfwd": "cpp",
+        "*.tcc": "cpp",
+        "fstream": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Enabled",
+    "editor.formatOnSave": true
+}

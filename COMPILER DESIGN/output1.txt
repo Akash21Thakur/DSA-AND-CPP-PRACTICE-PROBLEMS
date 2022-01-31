@@ -1,0 +1,10 @@
+AFTER REMOVING THE WHITESPACES :  
+
+#include<iostream>usingnamespacestd;intmain(){cout<<"HEY!THISISJUSTANINPUT"<<endl;inta=34+36;}
+
+TOKEN ARE AS : 
+1. KEYWORDS : 2
+2. IDENTIFIERS : 18
+3. OPERATOR : 2
+4. INTEGERS : 1
+5. OTHERS : 3
