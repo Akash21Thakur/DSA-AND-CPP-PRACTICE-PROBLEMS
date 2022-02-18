@@ -55,6 +55,7 @@ int getMedian(int ar1[], int ar2[], int n)
 }
 
 /* Driver program to test above function */
+// AKASH THAKUR
 int main()
 {
     int ar1[] = {1, 12, 15, 26, 38};
