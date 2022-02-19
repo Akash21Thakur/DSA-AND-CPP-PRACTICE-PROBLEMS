@@ -2,6 +2,8 @@
 // two sorted arrays
 #include <stdio.h>
 
+// From GFG
+
 /* This function returns median of ar1[] and ar2[].
 Assumptions in this function:
 Both ar1[] and ar2[] are sorted arrays
