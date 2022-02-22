@@ -2,6 +2,7 @@
 #include <climits>
 using namespace std;
 
+// Time  : min(logn,logm)
 double calMedian(int *a, int *b, int n, int m)
 {
     if (n > m)
