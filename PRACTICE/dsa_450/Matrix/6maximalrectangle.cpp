@@ -41,7 +41,7 @@ using namespace std;
             int cur_area=histogram[top]*(n-start-1);
             area=max(area,cur_area);
         }
-        
+        //
         return area;
         
     }
