@@ -3,13 +3,17 @@
 #include<stack>
 using namespace std;
 
+// Stack stores the current element's minimum to the left/right index
+
     int largestArea(vector<int> &histogram)
     {
         int n=histogram.size(),area=0;
         stack<int> s;
         
+        //left - max
         for(int i=0;i<n;i++)
         {
+
             while(!s.empty() and histogram[s.top()]>=histogram[i]) {
                 int top=s.top();
                 s.pop();
@@ -26,6 +30,7 @@ using namespace std;
             s.push(i);
         }
         
+        //calculate right max...and update the max area
         while(!s.empty())
         {
             int top=s.top();
