@@ -34,7 +34,7 @@ string countandsay(int n)
 int main()
 {
     int n;
-    cout<<"Enter the number : ";
+    cout<<"ENTER NUMBER : ";
     cin>>n;
     cout<<countandsay(n)<<endl;
 }
