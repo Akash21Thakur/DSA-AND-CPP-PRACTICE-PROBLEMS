@@ -49,7 +49,7 @@ void rabinKarpAlgo(string s, string pattern)
                 cout << "Pattern found at : " << i << endl;
         }
 
-        // claculate for next substring
+        // claculate for next Substring
         if (i < n - m)
         {
             t = (d * (t - s[i] * h) + s[i + m]) % mod;
