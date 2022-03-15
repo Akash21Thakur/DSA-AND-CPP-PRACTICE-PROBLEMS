@@ -34,7 +34,7 @@ void rabinKarpAlgo(string s, string pattern)
     // slide the window for all possible substring s
     for (i = 0; i <= n - m; i++)
     {
-        // check if hash value matches...
+        //  check if hash value matches...
         //  then check the characters one by one...print the idx if pattern found
         if (p == t)
         {
