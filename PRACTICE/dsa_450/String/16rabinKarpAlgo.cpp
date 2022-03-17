@@ -5,7 +5,7 @@ using namespace std;
 // abdul barri video...best explanation
 //sol: gfg
 
-#define d 256   // total numbers of possible symbol
+#define d 256   // total   numbers of possible symbol
 #define mod 101 // a prime   number
 
 void rabinKarpAlgo(string s, string pattern)
