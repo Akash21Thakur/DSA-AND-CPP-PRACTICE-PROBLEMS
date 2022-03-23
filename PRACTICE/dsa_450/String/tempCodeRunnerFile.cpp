@@ -1,1 +1,1 @@
-min(one,zero)+1
+1
