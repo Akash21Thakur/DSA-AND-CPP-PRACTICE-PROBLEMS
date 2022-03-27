@@ -20,7 +20,7 @@ public:
             dp[0][j + 1] = true;
         }
         
-        // for(int i=0;i<=s.size();i++)
+        //  for(int i=0;i<=s.size();i++)
         // {
 
         //     for(int j=0;j<=p.size();j++)
