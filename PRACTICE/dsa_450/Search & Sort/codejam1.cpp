@@ -8,7 +8,7 @@ int main()
     cin >> t;
     for (int j = 1; j <= t; j++)
     {
-        cout << "Case #" << j << ":\n";
+        cout << "Case  #" << j << ":\n";
         string s;
         cin >> s;
         string ans;
