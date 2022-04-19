@@ -7,7 +7,7 @@ using namespace std;
 class Solution
 {
 public:
-    // METHOD-1 N*M
+    // METHOD-1  N*M
     //     void insertionSort(int*b,int m)
     //     {
     //         for(int i=1;i<m;i++)
