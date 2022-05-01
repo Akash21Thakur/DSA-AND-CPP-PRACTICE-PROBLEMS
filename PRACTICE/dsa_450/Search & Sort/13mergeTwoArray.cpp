@@ -32,6 +32,7 @@ public:
     // 	}
 
     // METHOD-2
+    //striver for details
     int nextGap(int gap)
     {
         if (gap <= 1)
