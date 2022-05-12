@@ -59,7 +59,7 @@ int main()
     for(int i=0;i<n;i++)
        cin>>v[i];
 
-    merge(v,0,n-1);   
+    // merge(v,0,n-1);   
     for(int i=0;i<n;i++)
        cout<<v[i]<<" ";
 }
