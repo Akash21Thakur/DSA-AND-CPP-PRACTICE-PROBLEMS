@@ -13,7 +13,7 @@ struct Node
     }
 };
 
-//  function which splits the circular linked list.  head is pointer
+// function which splits the circular linked list.  head is pointer
 // to head Node of given lined list.  head1_ref1 and *head_ref2
 // are pointers to head pointers of resultant two halves.
 
