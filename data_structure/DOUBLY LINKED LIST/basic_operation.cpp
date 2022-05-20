@@ -33,54 +33,77 @@ void insert(Node *&head, int d)
 
 void insertAtPos(Node *&head, int d, int p)
 {
-    if (p == 1)
-    {
-        Node *n = new Node(d);
-        n->next = head;
-        head->prev = n;
-        head = n;
+    if (!head or p <= 0)
         return;
-    }
+
     Node *temp = head;
-    for (int i = 1; i < p - 1 and temp->next; i++)
+    int i;
+    for (i = 1; i < p and temp->next; i++)
         temp = temp->next;
 
-    if (!temp->next)
+    // last node to be inserted (p>size(list))
+    if (temp->next == NULL and i != p)
     {
         temp->next = new Node(d);
         temp->next->prev = temp;
         return;
     }
-    Node *t = temp->next;
-    temp->next = new Node(d);
-    temp->next->next = t;
-    temp->next->prev = temp;
-    t->prev = temp->next;
-}
 
-void delNode(Node *&head, int p)
-{
-    if (p == 1)
+    // if p==1
+    if (temp == head)
     {
-        Node *temp = head;
-        // head->next = NULL;
-
-        head = head->next;
-        free(temp);
+        temp->prev = new Node(d);
+        temp->prev->next = head;
+        head = temp->prev;
         return;
     }
+
+    // for all other nodes
+    Node *n = new Node(d);
+    Node *t = temp->prev;
+    temp->prev = n;
+    n->next = temp;
+    n->prev = t;
+    t->next = n;
+}
+
+void delNode(Node **head, Node *del)
+{
+    if (!*head or !del)
+        return;
+
+    // first node
+    if (*head == del)
+        *head = del->next;
+
+    // change next if not the last node
+    if (del->next != NULL)
+        del->next->prev = del->prev;
+
+    // change the prev if not the first node
+    if (del->prev != NULL)
+        del->prev->next = del->next;
+
+    free(del);
+}
+
+void delNodeAtPos(Node *&head, int p)
+{
+    if (!head or p <= 0)
+        return;
     Node *temp = head;
-    for (int i = 1; i < p - 1 and temp->next; i++)
+    int i;
+    for (i = 1; i < p and temp; i++)
         temp = temp->next;
 
-    if (!temp->next)
+    // p>size
+    if (!temp)
+    {
         cout << "INVALID POSITION" << endl;
-    Node *t = temp->next;
-    if (temp->next)
-        temp->next = temp->next->next;
-    if (temp->next->next)
-        temp->next->next->prev = temp;
-    // free(t);
+        return;
+    }
+
+    delNode(&head, temp);
 }
 
 void print(Node *head)
@@ -104,7 +127,7 @@ int main()
     insert(head, 53);
 
     print(head);
-    // insertAtPos(head, 100, 7);
-    delNode(head, 6);
+    insertAtPos(head, 100, 70);
+    // delNodeAtPos(head, 70);
     print(head);
 }
