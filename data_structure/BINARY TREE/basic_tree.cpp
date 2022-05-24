@@ -406,17 +406,16 @@ int shortestDist(node *root, int a, int b)
 int main()
 {
     node *root = createTree();
-    /*
 
-    // cout<<"IN_ORDER : ";
-    // inOrder(root);
-    // cout<<endl;
-    // cout<<"POST_ORDER : ";
-    // postOrder(root);
-    // cout<<endl;
-    cout<<"PRE_ORDER : ";
+    cout << "IN_ORDER : ";
+    inOrder(root);
+    cout << endl;
+    cout << "POST_ORDER : ";
+    postOrder(root);
+    cout << endl;
+    cout << "PRE_ORDER : ";
     preOrder(root);
-    cout<<endl;
+    cout << endl;
     // cout<<"Height of the tree : "<<height(root)<<endl;
     // printAllLevels(root);
     // cout<<endl;
@@ -435,19 +434,17 @@ int main()
     // int a[]={1,2,3,4,5,6,7,8,9};
     // node*r=buildFromArray(a,0,8);
     // bfsPrinting(r);
-    int in[]={5 ,1 ,10 ,9 ,6 ,7 ,8 ,3 ,13 ,14 };
-    int pre[]={ 8 ,10, 1, 5, 6, 9 ,7, 3, 14, 13 };
-    int post[]={5 ,1 ,9 ,7 ,6 ,10 ,13 ,14 ,3 ,8};
-    int n=sizeof(in)/sizeof(int);
-    node*r=buildTrreFromTrav(in,pre,0,n-1);
-    bfsPrinting(root);
-    cout<<endl;
-    bfsPrinting(r);
-    cout<<endl;
-    node*R=treeFromPostIn(in,post,0,n-1);
-    bfsPrinting(R);
-
-
+    // int in[]={5 ,1 ,10 ,9 ,6 ,7 ,8 ,3 ,13 ,14 };
+    // int pre[]={ 8 ,10, 1, 5, 6, 9 ,7, 3, 14, 13 };
+    // int post[]={5 ,1 ,9 ,7 ,6 ,10 ,13 ,14 ,3 ,8};
+    // int n=sizeof(in)/sizeof(int);
+    // node*r=buildTrreFromTrav(in,pre,0,n-1);
+    // bfsPrinting(root);
+    // cout<<endl;
+    // bfsPrinting(r);
+    // cout<<endl;
+    // node*R=treeFromPostIn(in,post,0,n-1);
+    // bfsPrinting(R);
 
     // int m=-1,l=0;
     // rightView(root,l,m);
@@ -459,6 +456,6 @@ int main()
     // bfsPrinting(root);
     // cout<<"MAXIMUM SUM : "<<maxiSum(root)<<endl;
 
-    cout << "SHORTEST DISTANCE : " << shortestDist(root, 5, 13) << endl;
-    ;
+    // cout << "SHORTEST DISTANCE : " << shortestDist(root, 5, 13) << endl;
+    // ;
 }
