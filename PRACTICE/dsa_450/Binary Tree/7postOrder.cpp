@@ -41,7 +41,7 @@ void postOrderRec(node *root)
     cout << root->data << " ";
 }
 
-void postOrderItrSTK1(node *root)
+void postOrderItrSTK2(node *root)
 {
     cout << "POST-ORDER TRAVERSAL ITERATIVE (USING 2-STACK) : ";
     stack<node *> s1; // stores the curr node element
@@ -70,6 +70,44 @@ void postOrderItrSTK1(node *root)
     cout << endl;
 }
 
+// using 1 stack // striver for ref.
+void postOrderItrSTK1(node *root)
+{
+    cout << "POST-ORDER TRAVERSAL ITERATIVE (USING 1-STACK) : ";
+    stack<node *> s;
+    node *temp = root;
+
+    while (temp or !s.empty())
+    {
+        if (temp != NULL)
+        {
+            s.push(temp);
+            temp = temp->left;
+        }
+        else
+        {
+            node *t = s.top()->right;
+            if (t == NULL)
+            {
+                t = s.top();
+                s.pop();
+
+                cout << t->data << " ";
+
+                while (!s.empty() and t == s.top()->right)
+                {
+                    t = s.top();
+                    s.pop();
+                    cout << t->data << " ";
+                }
+            }
+            else
+                temp = t;
+        }
+    }
+    cout << endl;
+}
+
 int main()
 {
     node *root = createTree();
@@ -78,5 +116,6 @@ int main()
     postOrderRec(root);
     cout << endl;
 
+    postOrderItrSTK2(root);
     postOrderItrSTK1(root);
 }
