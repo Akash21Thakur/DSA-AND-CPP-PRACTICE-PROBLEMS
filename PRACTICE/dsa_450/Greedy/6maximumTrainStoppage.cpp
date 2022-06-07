@@ -19,9 +19,11 @@ int countStoppage(int ar[][3], int n, int m)
     // row gives platforms
     vector<pair<int, int>> v[n + 1];
 
+    // insert in the ith entry's platform number vector
+    // with pair of <depart,arrival>
     for (int i = 0; i < m; i++)
     {
-        v[ar[i][2]].push_back({ar[i][1], ar[1][0]});
+        v[ar[i][2]].push_back({ar[i][1], ar[i][0]});
     }
 
     // sort all the vector
@@ -39,6 +41,7 @@ int countStoppage(int ar[][3], int n, int m)
         int x = 0; // track for selected train index from ith platform
         for (int j = 1; j < v[i].size(); j++)
         {
+            // last selected train's depart time must be less or equal to current train arrival time
             if (v[i][j].second >= v[i][x].first)
             {
                 x = j;
@@ -52,12 +55,11 @@ int countStoppage(int ar[][3], int n, int m)
 int main()
 {
     int arr[6][3] = {1000, 1030, 1,
-                     1010, 1030, 1,
-                     1000, 1020, 2,
-                     1030, 1230, 2,
-                     1200, 1230, 3,
-                     900, 1005, 1};
+                     1010, 1020, 1,
+                     1025, 1040, 1,
+                     1130, 1145, 2,
+                     1130, 1140, 2};
     cout << "Maximum Stopped Trains = "
-         << countStoppage(arr, 3, 6);
+         << countStoppage(arr, 2, 5);
     return 0;
 }
