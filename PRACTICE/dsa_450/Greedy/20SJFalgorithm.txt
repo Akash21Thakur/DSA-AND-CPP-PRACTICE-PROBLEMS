@@ -1,0 +1,11 @@
+The shortest job first (SJF) or shortest job next, is a scheduling policy that
+selects the waiting process with the smallest execution time to execute next. 
+SJN, also known as Shortest Job Next (SJN), can be preemptive or non-preemptive.  
+
+Algorithm: 
+
+1. Sort all the processes according to the arrival time. 
+2. Then select that process that has minimum arrival time and minimum Burst time. 
+3. After completion of the process make a pool of processes that arrives afterward 
+   till the completion of the previous process and select that process among the pool 
+   which is having minimum Burst time. 
