@@ -64,6 +64,7 @@ int main()
     {
         int n1, n2, n3;
         cin >> n1 >> n2 >> n3;
+        //
         vector<int> s1(n1), s2(n2), s3(n3);
         for (int i = 0; i < n1; i++)
         {
