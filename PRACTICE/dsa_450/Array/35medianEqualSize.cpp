@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-int findMed(int *ar1, int *ar2, int n)
+int findMed(int *arr1, int *arr2, int n)
 {
     int i = 0; // ar1 index
     int j = 0; // ar2 index
@@ -14,7 +14,7 @@ int findMed(int *ar1, int *ar2, int n)
         if (i == n)
         {
             m1 = m2;
-            m2 = ar2[0];
+            m2 = arr2[0];
             break;
         }
 
@@ -22,20 +22,20 @@ int findMed(int *ar1, int *ar2, int n)
         if (j == n)
         {
             m1 = m2;
-            m2 = ar1[0];
+            m2 = arr1[0];
             break;
         }
 
-        if (ar1[i] <= ar2[j])
+        if (arr1[i] <= arr2[j])
         {
-            m1 = m2;     // store the prev median
-            m2 = ar1[i]; // current median
+            m1 = m2;      // store the prev median
+            m2 = arr1[i]; // current median
             i++;
         }
         else
         {
-            m1 = m2;     // store the prev median
-            m2 = ar2[j]; // current median
+            m1 = m2;      // store the prev median
+            m2 = arr2[j]; // current median
             j++;
         }
     }

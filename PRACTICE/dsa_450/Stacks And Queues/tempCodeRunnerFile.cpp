@@ -1,0 +1,1 @@
+cout << pop() << endl;
