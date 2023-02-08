@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 using namespace std;
 
 int main()
@@ -31,27 +32,44 @@ int main()
     //  3. 1-> mid++;
     //  4. 2-> swap(m,h); high--;
 
-    int low = 0;
-    int mid = 0;
-    int high = n - 1;
+    // int low = 0;
+    // int mid = 0;
+    // int high = n - 1;
 
-    while (mid <= high)
+    // while (mid <= high)
+    // {
+    //     if (nums[mid] == 0)
+    //     {
+    //         swap(nums[low], nums[mid]);
+    //         low++;
+    //         mid++;
+    //     }
+    //     else if (nums[mid] == 1)
+    //         mid++;
+    //     else
+    //     {
+    //         swap(nums[mid], nums[high]);
+    //         high--;
+    //     }
+    // }
+
+    // for (auto num : nums)
+    //     cout << num << " ";
+
+    // METH-2 COUNT SORT
+    vector<int> a(3, 0);
+    for (int i = 0; i < n; i++)
+        a[nums[i]]++;
+
+    int j = 0;
+    for (int i = 0; i < n; i++)
     {
-        if (nums[mid] == 0)
-        {
-            swap(nums[low], nums[mid]);
-            low++;
-            mid++;
-        }
-        else if (nums[mid] == 1)
-            mid++;
-        else
-        {
-            swap(nums[mid], nums[high]);
-            high--;
-        }
+        if (a[j] == 0)
+            j++;
+        nums[i] = j;
+        a[j]--;
     }
 
-    for (auto num : nums)
-        cout << num << " ";
+    for (int i = 0; i < n; i++)
+        cout << nums[i] << " ";
 }

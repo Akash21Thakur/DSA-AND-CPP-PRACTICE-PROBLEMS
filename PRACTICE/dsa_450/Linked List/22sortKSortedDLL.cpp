@@ -117,6 +117,7 @@ Node *sortAKSortedDLLHeap(Node *head, int k)
         pq.pop();
 
         // push in heap the next element if present
+        // head--pq.top()...before popping
         if (head != NULL)
         {
             pq.push(head);

@@ -25,22 +25,51 @@ public:
     // the complete circle without exhausting its petrol in between.
     int tour(petrolPump p[], int n)
     {
-        int start = 0, deficit = 0;
-        int capacity = 0;
+        //   int start=0,deficit=0;
+        //   int capacity=0;
+        //   for(int i=0;i<n;i++)
+        //   {
+        //       capacity+=p[i].petrol-p[i].distance;
+
+        //       if(capacity<0)
+        //       {
+        //           start=i+1;
+        //           deficit+=capacity;
+        //           capacity=0;
+        //       }
+
+        // NEETCODE...
+        int p_sum = 0, d_sum = 0;
         for (int i = 0; i < n; i++)
         {
-            capacity += p[i].petrol - p[i].distance;
+            p_sum += p[i].petrol;
+            d_sum += p[i].distance;
+        }
 
-            if (capacity < 0)
+        // answer does not exist
+        if (p_sum < d_sum)
+            return -1;
+
+        // means we are sure about...that answer is possible
+        //  so just need to find that idx...and can be done in just single traversal O(n)
+        int idx = 0;
+        int total = 0;
+        for (int i = 0; i < n; i++)
+        {
+            total += (p[i].petrol - p[i].distance);
+
+            if (total < 0)
             {
-                start = i + 1;
-                deficit += capacity;
-                capacity = 0;
+                idx = i + 1;
+                total = 0;
             }
         }
-        //   at the end...net should not be negative
-        return (capacity + deficit) >= 0 ? start : -1;
+
+        return idx;
     }
+    //   at the end...net should not be negative
+    //   return (capacity+deficit)>=0 ? start: -1;
+    // }
 };
 
 //{ Driver Code Starts.

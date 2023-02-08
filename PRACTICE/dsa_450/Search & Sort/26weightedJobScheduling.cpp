@@ -58,6 +58,7 @@ int nonConflictBinaryS(Job *arr,int i)
 //  3. answer is  the maximum of (include_current_job,exclude)
 //  ----> including should not overlap with the timing of other job
 
+
 int findOptimal(Job *arr, int n)
 {
     sort(arr, arr + n, compator);
@@ -88,10 +89,12 @@ int findOptimal(Job *arr, int n)
 
 int main()
 {
-    Job arr[] = {{3, 10, 20},
+    Job arr[] = {
+                 {3, 10, 20},
                  {1, 2, 50},
                  {6, 19, 100},
-                 {2, 100, 200}};
+                 {2, 100, 200}
+                };
     int n = sizeof(arr) / sizeof(arr[0]);
 
     cout << "Optimal Profit is : " << findOptimal(arr, n) << endl;

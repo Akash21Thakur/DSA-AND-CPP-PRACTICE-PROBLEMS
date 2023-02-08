@@ -32,12 +32,25 @@ int main()
     // insert all the element then pop k-1 element
     // O(n+klogn)  ~ LINEAR
 
-    priority_queue<int, vector<int>, greater<int>> minHeap;
+    priority_queue<int> minHeap;
     for (int i = 0; i < n; i++)
         minHeap.push(nums[i]);
 
     for (int i = 0; i < k - 1; i++)
         minHeap.pop();
-
     cout << minHeap.top() << endl;
+
+    // METH-2 n+klogn
+    priority_queue<int, vector<int>, greater<int>> pq;
+    for (int i = 0; i < k; i++)
+        pq.push(nums[i]);
+    for (int i = k; i < n; i++)
+    {
+        if (pq.top() < nums[i])
+        {
+            pq.pop();
+            pq.push(nums[i]);
+        }
+    }
+    cout << pq.top() << endl;
 }

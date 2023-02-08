@@ -30,7 +30,7 @@ int findIntersection(vector<int> &a, vector<int> &b, int n, int m)
 
     for (int i = 0; i < m; i++)
     {
-        if (mp.erase(b[i]))
+        if (mp.find(b[i]) != mp.end())
             count++;
     }
 

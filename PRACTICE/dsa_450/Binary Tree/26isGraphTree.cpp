@@ -21,7 +21,7 @@ public:
         l[y].push_back(x);
     }
 
-    bool helper(int node, int parent, bool *visited)
+    bool isCyclic(int node, int parent, bool *visited)
     {
         visited[node] = true;
 
@@ -29,7 +29,7 @@ public:
         {
             if (!visited[nbr])
             {
-                bool cycle_mila = helper(nbr, node, visited);
+                bool cycle_mila = isCyclic(nbr, node, visited);
                 if (cycle_mila)
                     return true;
             }
@@ -45,7 +45,7 @@ public:
         for (int i = 0; i < V; i++)
             visited[i] = false;
 
-        if (helper(0, -1, visited))
+        if (isCyclic(0, -1, visited))
             return false;
 
         // if not cyclic...

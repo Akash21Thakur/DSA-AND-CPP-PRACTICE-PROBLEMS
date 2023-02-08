@@ -1,67 +1,152 @@
-#include <iostream>
-#include <vector>
-#include <unordered_map>
-#include <climits>
+//{ Driver Code Starts
+#include <bits/stdc++.h>
 using namespace std;
 
-class node
+struct Node
 {
-public:
     int data;
-    node *left;
-    node *right;
-
-    node(int d)
-    {
-        data = d;
-        left = NULL;
-        right = NULL;
-    }
+    struct Node *left;
+    struct Node *right;
 };
-
-node *createTree()
+Node *newNode(int val)
 {
-    int d;
-    cin >> d;
-    if (d == -1)
-        return NULL;
-    node *root = new node(d);
-    root->left = createTree();
-    root->right = createTree();
-    return root;
+    Node *temp = new Node;
+    temp->data = val;
+    temp->left = NULL;
+    temp->right = NULL;
+
+    return temp;
 }
-
-// temporary node to keep track of Node returned
-// from previous recursive call during backtrack
-node *temp = NULL;
-
-node *kthAncestor(node *root, int val, int &k)
+Node *buildTree(string str)
 {
-    if (!root)
+    // Corner Case
+    if (str.length() == 0 || str[0] == 'N')
         return NULL;
 
-    if (root->data == val or (temp = kthAncestor(root->left, val, k)) or (temp = kthAncestor(root->right, val, k)))
-    {
-        if (k > 0)
-            k--;
-        else if (k == 0)
-        {
-            cout << "Kth ancestor is : " << root->data;
+    // Creating vector of strings from input
+    // string after spliting by space
+    vector<string> ip;
 
-            // return NULL to stop further backtracking
-            return NULL;
+    istringstream iss(str);
+    for (string str; iss >> str;)
+        ip.push_back(str);
+
+    // Create the root of the tree
+    Node *root = newNode(stoi(ip[0]));
+
+    // Push the root to the queue
+    queue<Node *> queue;
+    queue.push(root);
+
+    // Starting from the second element
+    int i = 1;
+    while (!queue.empty() && i < ip.size())
+    {
+
+        // Get and remove the front of the queue
+        Node *currNode = queue.front();
+        queue.pop();
+
+        // Get the current node's value from the string
+        string currVal = ip[i];
+
+        // If the left child is not null
+        if (currVal != "N")
+        {
+
+            // Create the left child for the current node
+            currNode->left = newNode(stoi(currVal));
+
+            // Push it to the queue
+            queue.push(currNode->left);
         }
 
-        return root;
+        // For the right child
+        i++;
+        if (i >= ip.size())
+            break;
+        currVal = ip[i];
+
+        // If the right child is not null
+        if (currVal != "N")
+        {
+
+            // Create the right child for the current node
+            currNode->right = newNode(stoi(currVal));
+
+            // Push it to the queue
+            queue.push(currNode->right);
+        }
+        i++;
     }
+
+    return root;
 }
+int kthAncestor(Node *root, int k, int node);
 
 int main()
 {
-    node *root = createTree();
-    int k = 2, n = 5;
-    node *ans = kthAncestor(root, n, k);
+    int t;
+    scanf("%d ", &t);
+    while (t--)
+    {
+        int k, node;
+        scanf("%d ", &k);
+        scanf("%d ", &node);
+        string s;
+        getline(cin, s);
+        Node *root = buildTree(s);
+        cout << kthAncestor(root, k, node) << endl;
+    }
+    return 0;
+}
 
-    if (ans)
-        cout << -1 << endl;
+// } Driver Code Ends
+
+// User function Template for C++
+/*
+Structure of the node of the binary tree is as
+struct Node
+{
+    int data;
+    struct Node *left, *right;
+};
+*/
+// your task is to complete this function
+
+bool helper(Node *root, int &k, int node, int &ans)
+{
+    if (!root)
+        return false;
+
+    // curr node
+    if (root->data == node)
+        return true;
+
+    // left subtree
+    if (helper(root->left, k, node, ans))
+    {
+        k--;
+        if (k == 0)
+            ans = root->data;
+        return true;
+    }
+
+    // right subtree
+    if (helper(root->right, k, node, ans))
+    {
+        k--;
+        if (k == 0)
+            ans = root->data;
+        return true;
+    }
+
+    return false;
+}
+
+int kthAncestor(Node *root, int k, int node)
+{
+    int ans = -1;
+    helper(root, k, node, ans);
+    return ans;
 }

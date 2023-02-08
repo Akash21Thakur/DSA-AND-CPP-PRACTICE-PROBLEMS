@@ -108,7 +108,7 @@ public:
             return false; // if data do not match...simply return
 
         bool same_child = (isIsomorphic(root1->left, root2->left) and isIsomorphic(root1->right, root2->right));
-        bool cross_child(isIsomorphic(root1->left, root2->right) and isIsomorphic(root1->right, root2->left));
+        bool cross_child=(isIsomorphic(root1->left, root2->right) and isIsomorphic(root1->right, root2->left));
 
         return same_child or cross_child; // either is true
     }

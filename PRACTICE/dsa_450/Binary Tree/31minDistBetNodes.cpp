@@ -11,17 +11,34 @@ struct Node
     int data;
     Node *left;
     Node *right;
+
+    Node(int i)
+    {
+        this->data=i;
+        left=right=NULL;
+    }
 };
 
 // Utility function to create a new Tree Node
-Node *newNode(int val)
-{
-    Node *temp = new Node;
-    temp->data = val;
-    temp->left = NULL;
-    temp->right = NULL;
+// Node *newNode(int val)
+// {
+//     Node *temp = new Node(i);
+//     temp->data = val;
+//     temp->left = NULL;
+//     temp->right = NULL;
 
-    return temp;
+//     return temp;
+// }
+
+Node* createTree(int i,int n)
+{
+    if(i>n)
+       return NULL;
+    Node*root=new Node(i);
+    root->left=createTree(i+1,n);
+    root->right=createTree(i+1,n);
+
+    return root;   
 }
 
 // Function to Build Tree
@@ -103,7 +120,8 @@ class Solution
 {
 public:
     /* Should return minimum distance between a and b
-    in a tree with given root*/
+    in a tree with given root
+    */
 
     Node *lcaFunc(Node *root, int a, int b)
     {

@@ -1,53 +1,43 @@
-#include<iostream>
-#include<climits>
+#include <bits/stdc++.h>
 using namespace std;
 
-int minCoins(int n, int coins[], int T, int dp[]){
-	//base case
-	if(n==0){
-		return 0;
-	}
-	//lookup		
-	if(dp[n]!=0){
-		return dp[n];
-	}
-	int ans = INT_MAX;
-	for(int i=0;i<T;i++){ 
-	if(n-coins[i]>=0){
-		int subprob = minCoins(n-coins[i],coins,T,dp);
-		ans = min(ans,subprob+1);
-		}
-	}
-	dp[n] = ans;
-	return dp[n];
-}
+int func(string s)
+{
+	int red_count = 0;
 
-//bottom up
-int mincoinBU(int N, int coins[], int T){
-	int dp[100] = {0};
-	
-	//Iterate over all states 1..N
-	for(int n=1;n<=N;n++){
-		//init the current ans as int_max
-		dp[n] = INT_MAX;
-		
-		for(int i=0;i<T;i++){
-			if(n-coins[i]>=0){
-				int subprob = dp[n-coins[i]];
-				dp[n] = min(dp[n],subprob+1);
-			}
-		}
-	}
-	return dp[N];
-}
+	for (char c : s)
+	{
 
-int main(){
-	int N ;
-    cin>>N;
-	int coins[] = {1,7,10};
-	int dp[10000] = {0};
-	int T = sizeof(coins)/sizeof(int);
-	
-	cout<<"Top-Down : "<<minCoins(N,coins,T,dp)<<endl;
-	// cout<<"Bottom-UP : "<<mincoinBU(N,coins,T);
+		if (c == 'R')
+			++red_count;
+	}
+
+	int left = 0, right = s.size() - 1, result = 0;
+
+	while (left < right)
+	{
+		if (s[left] == 'R' && s[right] == 'R')
+		{
+			red_count -= 2;
+			result += right - left - 1 - red_count;
+
+			++left;
+
+			--right;
+		}
+
+		else if (s[left] != 'R')
+			++left;
+
+		else
+
+			--right;
+	}
+	return result;
+}
+int main()
+{
+	string s;
+	cin >> s;
+	cout << func(s) << endl;
 }
